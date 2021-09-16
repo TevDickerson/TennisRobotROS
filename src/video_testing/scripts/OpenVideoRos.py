@@ -3,6 +3,7 @@
 import rospy
 import cv2
 
+#Hi to myself this worked.
 
 def startvideo():
     rospy.init_node('videoer', anonymous=True)
