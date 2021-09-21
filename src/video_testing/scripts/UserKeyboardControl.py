@@ -6,7 +6,7 @@ from geometry_msgs.msg import Twist
 
 
 def callback(msg):
-    print(msg)
+    print(msg.linear.x)
 
 
 def listener():
