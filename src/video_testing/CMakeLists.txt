@@ -162,6 +162,7 @@ include_directories(
  catkin_install_python(PROGRAMS
    scripts/OpenVideoRos.py
    scripts/ServoTesting.py
+   scripts/UserKeyboardControl.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 

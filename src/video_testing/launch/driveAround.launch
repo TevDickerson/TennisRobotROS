@@ -1,0 +1,7 @@
+<launch>
+  
+  <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_node" />
+
+  <node pkg="video_testing" type="UserKeyboardControl.py" name="userkeyboardcontrol_node" />
+
+</launch>
