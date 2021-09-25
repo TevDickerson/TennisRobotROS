@@ -22,6 +22,12 @@ def listener():
     rospy.spin()
 
 
+def myhook():
+    GPIO.output(4, GPIO.LOW)
+
+
+rospy.on_shutdown(myhook)
+
 if __name__ == '__main__':
 
     try:
