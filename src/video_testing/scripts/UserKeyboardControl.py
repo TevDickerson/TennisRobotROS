@@ -2,10 +2,13 @@
 
 import rospy
 from adafruit_servokit import ServoKit
-
+from RPi.GPIO as GPIO
 from geometry_msgs.msg import Twist
 
 kit = ServoKit(channels=16)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(4,GPIO.OUT)
+GPIO.output(4,GPIO.HIGH)
 
 
 def callback(msg):
