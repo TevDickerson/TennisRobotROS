@@ -8,9 +8,9 @@ from geometry_msgs.msg import Twist
 kit = ServoKit(channels=16)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.OUT)
-GPIO.setup(27, GPIO.OUT)
+GPIO.setup(22, GPIO.OUT)
 GPIO.output(18, GPIO.HIGH)
-GPIO.output(27, GPIO.HIGH)
+GPIO.output(22, GPIO.HIGH)
 
 def callback(msg):
     print(msg.linear.x)
@@ -26,7 +26,7 @@ def listener():
 
 def myhook():
     GPIO.output(18, GPIO.LOW)
-    GPIO.output(27, GPIO.LOW)
+    GPIO.output(22, GPIO.LOW)
 
 rospy.on_shutdown(myhook)
 
