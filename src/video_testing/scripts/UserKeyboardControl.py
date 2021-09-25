@@ -13,7 +13,7 @@ GPIO.output(4, GPIO.HIGH)
 
 def callback(msg):
     print(msg.linear.x)
-    kit.continuous_servo[0].throttle = msg.linear.x
+    kit.continuous_servo[0].throttle = msg.linear.x * 2
 
 
 def listener():
