@@ -7,13 +7,15 @@ from geometry_msgs.msg import Twist
 
 kit = ServoKit(channels=16)
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(4, GPIO.OUT)
-GPIO.output(4, GPIO.HIGH)
-
+GPIO.setup(18, GPIO.OUT)
+GPIO.setup(27, GPIO.OUT)
+GPIO.output(18, GPIO.HIGH)
+GPIO.output(27, GPIO.HIGH)
 
 def callback(msg):
     print(msg.linear.x)
     kit.continuous_servo[0].throttle = msg.linear.x * 2
+    kit.continuous_servo[1].throttle = msg.linear.x * 2
 
 
 def listener():
@@ -23,8 +25,8 @@ def listener():
 
 
 def myhook():
-    GPIO.output(4, GPIO.LOW)
-
+    GPIO.output(18, GPIO.LOW)
+    GPIO.output(27, GPIO.LOW)
 
 rospy.on_shutdown(myhook)
 
