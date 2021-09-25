@@ -27,4 +27,5 @@ if __name__ == '__main__':
     try:
         listener()
     except rospy.ROSInterruptException:
+        GPIO.output(4, GPIO.LOW)
         pass
