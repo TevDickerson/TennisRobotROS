@@ -23,8 +23,8 @@ LEFT_WHEEL = hat.channels[1]
 
 def callback(msg):
     print(msg.linear.x)
-    RIGHT_WHEEL.duty_cycle = msg.linear.x * 2 * 1000
-    LEFT_WHEEL.duty_cycle = msg.linear.x * 2 * 1000
+    RIGHT_WHEEL.duty_cycle = round(msg.linear.x * 2 * 1000)
+    LEFT_WHEEL.duty_cycle = round(msg.linear.x * 2 * 1000)
 
 
 def listener():
