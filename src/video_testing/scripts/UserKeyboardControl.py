@@ -11,7 +11,7 @@ pin1 = 18
 pin2 = 22
 pin3 = 13
 pin4 = 27
-pin5 = 5
+pin5 = 6
 
 i2c = busio.I2C(board.SCL, board.SDA)
 hat = adafruit_pca9685.PCA9685(i2c)
