@@ -9,7 +9,7 @@ from geometry_msgs.msg import Twist
 
 pin1 = 18
 pin2 = 22
-pin3 = 12
+pin3 = 13
 pin4 = 27
 
 i2c = busio.I2C(board.SCL, board.SDA)
