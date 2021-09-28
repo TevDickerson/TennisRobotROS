@@ -14,11 +14,11 @@ hat = adafruit_pca9685.PCA9685(i2c)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.OUT)
 GPIO.setup(22, GPIO.OUT)
-GPIO.setup(4, GPIO.OUT)
+GPIO.setup(17, GPIO.OUT)
 GPIO.setup(27, GPIO.OUT)
 GPIO.output(18, GPIO.HIGH)
 GPIO.output(22, GPIO.HIGH)
-GPIO.setup(4, GPIO.LOW)
+GPIO.setup(17, GPIO.LOW)
 GPIO.setup(27, GPIO.LOW)
 hat.frequency = 60
 RIGHT_WHEEL = hat.channels[0]
