@@ -7,19 +7,23 @@ from adafruit_servokit import ServoKit
 import RPi.GPIO as GPIO
 from geometry_msgs.msg import Twist
 
+pin1 = 18
+pin2 = 22
+pin3 = 25
+pin4 = 27
 
 i2c = busio.I2C(board.SCL, board.SDA)
 hat = adafruit_pca9685.PCA9685(i2c)
 # kit = ServoKit(channels=16)
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(18, GPIO.OUT)
-GPIO.setup(22, GPIO.OUT)
-GPIO.setup(23, GPIO.OUT)
-GPIO.setup(27, GPIO.OUT)
-GPIO.output(18, GPIO.HIGH)
-GPIO.output(22, GPIO.HIGH)
-GPIO.setup(23, GPIO.HIGH)
-GPIO.setup(27, GPIO.LOW)
+GPIO.setup(pin1, GPIO.OUT)
+GPIO.setup(pin2, GPIO.OUT)
+GPIO.setup(pin3, GPIO.OUT)
+GPIO.setup(pin4, GPIO.OUT)
+GPIO.output(pin1, GPIO.HIGH)
+GPIO.output(pin2, GPIO.HIGH)
+GPIO.setup(pin3, GPIO.HIGH)
+GPIO.setup(pin4, GPIO.LOW)
 hat.frequency = 60
 RIGHT_WHEEL = hat.channels[0]
 LEFT_WHEEL = hat.channels[1]
@@ -28,15 +32,15 @@ LEFT_WHEEL = hat.channels[1]
 def callback(msg):
     print(msg.linear.x)
     if msg.linear.x >= 0:
-        GPIO.output(18, GPIO.HIGH)
-        GPIO.output(22, GPIO.HIGH)
-        GPIO.setup(23, GPIO.LOW)
-        GPIO.setup(27, GPIO.LOW)
+        GPIO.output(pin1, GPIO.HIGH)
+        GPIO.output(pin2, GPIO.HIGH)
+        GPIO.setup(pin3, GPIO.LOW)
+        GPIO.setup(pin4, GPIO.LOW)
     else:
-        GPIO.output(18, GPIO.LOW)
-        GPIO.output(22, GPIO.LOW)
-        GPIO.setup(23, GPIO.HIGH)
-        GPIO.setup(27, GPIO.HIGH)
+        GPIO.output(pin1, GPIO.LOW)
+        GPIO.output(pin2, GPIO.LOW)
+        GPIO.setup(pin3, GPIO.HIGH)
+        GPIO.setup(pin4, GPIO.HIGH)
 
     throttle_val = abs(msg.linear.x)
 
@@ -51,10 +55,10 @@ def listener():
 
 
 def myhook():
-    GPIO.output(18, GPIO.LOW)
-    GPIO.output(22, GPIO.LOW)
-    GPIO.setup(23, GPIO.LOW)
-    GPIO.setup(27, GPIO.LOW)
+    GPIO.output(pin1, GPIO.LOW)
+    GPIO.output(pin2, GPIO.LOW)
+    GPIO.setup(pin3, GPIO.LOW)
+    GPIO.setup(pin4, GPIO.LOW)
     RIGHT_WHEEL.duty_cycle = 0
     LEFT_WHEEL.duty_cycle = 0
 
