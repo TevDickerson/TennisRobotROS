@@ -11,6 +11,7 @@ pin1 = 18
 pin2 = 22
 pin3 = 13
 pin4 = 27
+pin5 = 16
 
 i2c = busio.I2C(board.SCL, board.SDA)
 hat = adafruit_pca9685.PCA9685(i2c)
@@ -24,6 +25,10 @@ GPIO.output(pin1, GPIO.HIGH)
 GPIO.output(pin2, GPIO.HIGH)
 GPIO.setup(pin3, GPIO.HIGH)
 GPIO.setup(pin4, GPIO.LOW)
+
+GPIO.setup(pin5, GPIO.OUT)
+GPIO.setup(pin5, GPIO.HIGH)
+
 hat.frequency = 60
 RIGHT_WHEEL = hat.channels[0]
 LEFT_WHEEL = hat.channels[1]
