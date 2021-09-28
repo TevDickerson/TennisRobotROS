@@ -38,8 +38,10 @@ def callback(msg):
         GPIO.setup(4, GPIO.HIGH)
         GPIO.setup(27, GPIO.HIGH)
 
-    RIGHT_WHEEL.duty_cycle = round(msg.linear.x * 2 * 1000)
-    LEFT_WHEEL.duty_cycle = round(msg.linear.x * 2 * 1000)
+    throttle_val = abs(msg.linear.x)
+
+    RIGHT_WHEEL.duty_cycle = round(throttle_val * 2 * 1000)
+    LEFT_WHEEL.duty_cycle = round(throttle_val * 2 * 1000)
 
 
 def listener():
