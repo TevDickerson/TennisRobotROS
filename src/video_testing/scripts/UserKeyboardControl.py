@@ -53,6 +53,7 @@ def listener():
 def myhook():
     GPIO.output(pin1, GPIO.LOW)
     GPIO.output(pin2, GPIO.LOW)
+    GPIO.output(pin3, GPIO.LOW)
     RIGHT_WHEEL.duty_cycle = 0
     LEFT_WHEEL.duty_cycle = 0
 
