@@ -7,11 +7,11 @@ from adafruit_servokit import ServoKit
 import RPi.GPIO as GPIO
 from geometry_msgs.msg import Twist
 
-pin1 = 6
+pin1 = 18
 pin2 = 22
-pin3 = 13
+pin3 = 17
 pin4 = 27
-pin5 = 18
+pin5 = 6
 
 i2c = busio.I2C(board.SCL, board.SDA)
 hat = adafruit_pca9685.PCA9685(i2c)
@@ -19,15 +19,7 @@ hat = adafruit_pca9685.PCA9685(i2c)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pin1, GPIO.OUT)
 GPIO.setup(pin2, GPIO.OUT)
-GPIO.setup(pin3, GPIO.OUT)
-GPIO.setup(pin4, GPIO.OUT)
-GPIO.output(pin1, GPIO.HIGH)
-GPIO.output(pin2, GPIO.HIGH)
-GPIO.setup(pin3, GPIO.HIGH)
-GPIO.setup(pin4, GPIO.LOW)
 
-GPIO.setup(pin5, GPIO.OUT)
-GPIO.setup(pin5, GPIO.HIGH)
 
 hat.frequency = 60
 RIGHT_WHEEL = hat.channels[0]
@@ -38,14 +30,11 @@ def callback(msg):
     print(msg.linear.x)
     if msg.linear.x >= 0:
         GPIO.output(pin1, GPIO.HIGH)
-        GPIO.output(pin2, GPIO.HIGH)
-        GPIO.setup(pin3, GPIO.LOW)
-        GPIO.setup(pin4, GPIO.LOW)
+        GPIO.output(pin2, GPIO.LOW)
+
     else:
         GPIO.output(pin1, GPIO.LOW)
-        GPIO.output(pin2, GPIO.LOW)
-        GPIO.setup(pin3, GPIO.HIGH)
-        GPIO.setup(pin4, GPIO.HIGH)
+        GPIO.output(pin2, GPIO.HIGH)
 
     throttle_val = abs(msg.linear.x)
 
