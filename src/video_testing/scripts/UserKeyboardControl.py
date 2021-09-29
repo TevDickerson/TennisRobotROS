@@ -7,11 +7,11 @@ from adafruit_servokit import ServoKit
 import RPi.GPIO as GPIO
 from geometry_msgs.msg import Twist
 
-pin1 = 18
+pin1 = 6
 pin2 = 22
 pin3 = 13
 pin4 = 27
-pin5 = 6
+pin5 = 18
 
 i2c = busio.I2C(board.SCL, board.SDA)
 hat = adafruit_pca9685.PCA9685(i2c)
