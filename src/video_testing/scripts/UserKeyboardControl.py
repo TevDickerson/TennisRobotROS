@@ -22,8 +22,8 @@ GPIO.setup(pin2, GPIO.OUT)
 GPIO.setup(pin3, GPIO.OUT)
 GPIO.setup(pin4, GPIO.OUT)
 
-GPIO.output(pin3, GPIO.HIGH)
-GPIO.output(pin4, GPIO.HIGH)
+GPIO.output(pin3, GPIO.LOW)
+GPIO.output(pin4, GPIO.LOW)
 
 hat.frequency = 60
 RIGHT_WHEEL = hat.channels[0]
@@ -34,11 +34,11 @@ def callback(msg):
     print(msg.linear.x)
     if msg.linear.x >= 0:
         GPIO.output(pin1, GPIO.HIGH)
-        GPIO.output(pin2, GPIO.LOW)
+        GPIO.output(pin2, GPIO.HIGH)
 
     else:
         GPIO.output(pin1, GPIO.LOW)
-        GPIO.output(pin2, GPIO.HIGH)
+        GPIO.output(pin2, GPIO.LOW)
 
     throttle_val = abs(msg.linear.x)
 
