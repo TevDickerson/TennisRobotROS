@@ -44,6 +44,11 @@ def callback(msg):
             GPIO.output(pin2, GPIO.LOW)
             GPIO.output(pin3, GPIO.HIGH)
             GPIO.output(pin4, GPIO.HIGH)
+
+        throttle_val = abs(msg.linear.x)
+
+        RIGHT_WHEEL.duty_cycle = round(throttle_val * 2 * 1000)
+        LEFT_WHEEL.duty_cycle = round(throttle_val * 2 * 1000)
     elif msg.angular.z != 0:
         if msg.angular.z >= 0:
             GPIO.output(pin1, GPIO.HIGH)
@@ -56,11 +61,11 @@ def callback(msg):
             GPIO.output(pin2, GPIO.HIGH)
             GPIO.output(pin3, GPIO.HIGH)
             GPIO.output(pin4, GPIO.LOW)
+        throttle_val = abs(msg.angular.z)
 
-    throttle_val = abs(msg.linear.x)
+        RIGHT_WHEEL.duty_cycle = round(throttle_val * 2 * 1000)
+        LEFT_WHEEL.duty_cycle = round(throttle_val * 2 * 1000)
 
-    RIGHT_WHEEL.duty_cycle = round(throttle_val * 2 * 1000)
-    LEFT_WHEEL.duty_cycle = round(throttle_val * 2 * 1000)
 
 
 def listener():
