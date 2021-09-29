@@ -66,6 +66,10 @@ def callback(msg):
         RIGHT_WHEEL.duty_cycle = round(throttle_val * 2 * 1000)
         LEFT_WHEEL.duty_cycle = round(throttle_val * 2 * 1000)
 
+    else:
+        RIGHT_WHEEL.duty_cycle = 0
+        LEFT_WHEEL.duty_cycle = 0
+
 
 
 def listener():
