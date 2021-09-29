@@ -32,17 +32,31 @@ LEFT_WHEEL = hat.channels[1]
 
 def callback(msg):
     print(msg.linear.x)
-    if msg.linear.x >= 0:
-        GPIO.output(pin1, GPIO.HIGH)
-        GPIO.output(pin2, GPIO.HIGH)
-        GPIO.output(pin3, GPIO.LOW)
-        GPIO.output(pin4, GPIO.LOW)
+    if msg.linear.x != 0:
+        if msg.linear.x >= 0:
+            GPIO.output(pin1, GPIO.HIGH)
+            GPIO.output(pin2, GPIO.HIGH)
+            GPIO.output(pin3, GPIO.LOW)
+            GPIO.output(pin4, GPIO.LOW)
 
+        else:
+            GPIO.output(pin1, GPIO.LOW)
+            GPIO.output(pin2, GPIO.LOW)
+            GPIO.output(pin3, GPIO.HIGH)
+            GPIO.output(pin4, GPIO.HIGH)
     else:
-        GPIO.output(pin1, GPIO.LOW)
-        GPIO.output(pin2, GPIO.LOW)
-        GPIO.output(pin3, GPIO.HIGH)
-        GPIO.output(pin4, GPIO.HIGH)
+        if msg.angular.z >= 0:
+            GPIO.output(pin1, GPIO.HIGH)
+            GPIO.output(pin2, GPIO.LOW)
+            GPIO.output(pin3, GPIO.HIGH)
+            GPIO.output(pin4, GPIO.LOW)
+
+        else:
+            GPIO.output(pin1, GPIO.LOW)
+            GPIO.output(pin2, GPIO.HIGH)
+            GPIO.output(pin3, GPIO.LOW)
+            GPIO.output(pin4, GPIO.HIGH)
+
 
     throttle_val = abs(msg.linear.x)
 
