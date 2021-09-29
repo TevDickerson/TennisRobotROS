@@ -10,7 +10,7 @@ from geometry_msgs.msg import Twist
 pin1 = 18
 pin2 = 22
 pin3 = 17
-pin4 = 27
+pin4 = 6
 pin5 = 6
 
 i2c = busio.I2C(board.SCL, board.SDA)
@@ -20,8 +20,10 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(pin1, GPIO.OUT)
 GPIO.setup(pin2, GPIO.OUT)
 GPIO.setup(pin3, GPIO.OUT)
+GPIO.setup(pin4, GPIO.OUT)
 
 GPIO.output(pin3, GPIO.HIGH)
+GPIO.output(pin4, GPIO.HIGH)
 
 hat.frequency = 60
 RIGHT_WHEEL = hat.channels[0]
