@@ -19,7 +19,9 @@ hat = adafruit_pca9685.PCA9685(i2c)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pin1, GPIO.OUT)
 GPIO.setup(pin2, GPIO.OUT)
+GPIO.setup(pin3, GPIO.OUT)
 
+GPIO.output(pin3, GPIO.HIGH)
 
 hat.frequency = 60
 RIGHT_WHEEL = hat.channels[0]
@@ -51,8 +53,6 @@ def listener():
 def myhook():
     GPIO.output(pin1, GPIO.LOW)
     GPIO.output(pin2, GPIO.LOW)
-    GPIO.setup(pin3, GPIO.LOW)
-    GPIO.setup(pin4, GPIO.LOW)
     RIGHT_WHEEL.duty_cycle = 0
     LEFT_WHEEL.duty_cycle = 0
 
