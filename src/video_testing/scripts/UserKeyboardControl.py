@@ -45,7 +45,7 @@ def callback(msg):
             GPIO.output(pin3, GPIO.HIGH)
             GPIO.output(pin4, GPIO.HIGH)
     else:
-        if msg.angular.z >= 0:
+        if msg.linear.y >= 0:
             GPIO.output(pin1, GPIO.HIGH)
             GPIO.output(pin2, GPIO.LOW)
             GPIO.output(pin3, GPIO.HIGH)
