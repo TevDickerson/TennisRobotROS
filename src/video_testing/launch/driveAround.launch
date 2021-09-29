@@ -3,5 +3,7 @@
   <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_node" />
 
   <node pkg="video_testing" type="UserKeyboardControl.py" name="userkeyboardcontrol_node" />
+  
+  <node pkg="video_testing" type="OpenVideoRos.py" name="Video_node" />
 
 </launch>
