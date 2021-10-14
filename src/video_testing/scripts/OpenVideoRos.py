@@ -3,8 +3,9 @@
 import rospy
 import cv2
 
+def empty():
+    pass
 
-# Hi to myself this worked.
 
 def startvideo():
     rospy.init_node('videoer', anonymous=True)
@@ -15,7 +16,9 @@ def startvideo():
     cap.set(4, 480)
     cap.set(10, 50)
 
-    # cv2.namedWindow("Video",cv2.WINDOW_NORMAL)
+    cv2.namedWindow("TrackedBars")
+    cv2.resizeWindow("TrackedBars", 640, 240)
+    cv2.createTrackbar("Hue min", "TrackedBars", 0, 179, empty)
 
     while not rospy.is_shutdown():
         success, img = cap.read()
