@@ -12,7 +12,7 @@ def getContours(img, imgcontors):
     contours, heirarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     for cnt in contours:
         area = cv2.contourArea(cnt)
-        if area > 500:
+        if area > 50:
             cv2.drawContours(imgcontors, cnt, -1, (255, 0, 0), 3)
 
 def startvideo():
