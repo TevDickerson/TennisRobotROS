@@ -8,6 +8,12 @@ import numpy as np
 def empty(val):
     pass
 
+def getContours(img, imgcontors):
+    contours, heirarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    for cnt in contours:
+        area = cv2.contourArea(cnt)
+        if area > 500:
+            cv2.drawContours(imgcontors, cnt, -1, (255, 0, 0), 3)
 
 def startvideo():
     rospy.init_node('videoer', anonymous=True)
@@ -50,6 +56,11 @@ def startvideo():
         imgcanny = cv2.Canny(mask, 50, 50)
 
         cv2.imshow("Canny", imgcanny)
+
+        imgcontors = img.copy()
+        getContours(imgcanny, imgcontors)
+
+        cv2.imshow("Contors", imgcontors)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
