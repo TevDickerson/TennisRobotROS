@@ -47,6 +47,10 @@ def startvideo():
 
         cv2.imshow("Mask", mask)
 
+        imgcanny = cv2.Canny(mask, 50, 50)
+
+        cv2.imshow("Canny", imgcanny)
+
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
