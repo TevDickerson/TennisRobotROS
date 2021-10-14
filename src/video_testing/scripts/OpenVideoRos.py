@@ -20,11 +20,11 @@ def startvideo():
 
     cv2.namedWindow("TrackedBars")
     cv2.resizeWindow("TrackedBars", 640, 240)
-    cv2.createTrackbar("Hue min", "TrackedBars", 0, 179, empty)
-    cv2.createTrackbar("Hue max", "TrackedBars", 179, 179, empty)
-    cv2.createTrackbar("Sat min", "TrackedBars", 0, 255, empty)
-    cv2.createTrackbar("Sat max", "TrackedBars", 255, 255, empty)
-    cv2.createTrackbar("Val min", "TrackedBars", 0, 255, empty)
+    cv2.createTrackbar("Hue min", "TrackedBars", 23, 179, empty)
+    cv2.createTrackbar("Hue max", "TrackedBars", 50, 179, empty)
+    cv2.createTrackbar("Sat min", "TrackedBars", 29, 255, empty)
+    cv2.createTrackbar("Sat max", "TrackedBars", 199, 255, empty)
+    cv2.createTrackbar("Val min", "TrackedBars", 21, 255, empty)
     cv2.createTrackbar("Val max", "TrackedBars", 255, 255, empty)
 
     while not rospy.is_shutdown():
