@@ -2,6 +2,7 @@
 
 import rospy
 import cv2
+import numpy as np
 
 
 def empty(val):
@@ -32,6 +33,19 @@ def startvideo():
 
         img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
         cv2.imshow("HSV", img_hsv)
+
+        h_min = cv2.getTrackbarPos("Hue min", "TrackedBars")
+        h_max = cv2.getTrackbarPos("Hue max", "TrackedBars")
+        s_min = cv2.getTrackbarPos("Sat min", "TrackedBars")
+        s_max = cv2.getTrackbarPos("Sat max", "TrackedBars")
+        v_min = cv2.getTrackbarPos("Val min", "TrackedBars")
+        v_max = cv2.getTrackbarPos("Val max", "TrackedBars")
+
+        lower = np.array([h_min, s_min, v_min])
+        upper = np.array([h_max, s_max, v_max])
+        mask = cv2.inRange(img_hsv, lower, upper)
+
+        cv2.imshow("Mask", mask)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
