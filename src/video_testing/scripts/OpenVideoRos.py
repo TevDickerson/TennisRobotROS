@@ -20,6 +20,10 @@ def startvideo():
     while not rospy.is_shutdown():
         success, img = cap.read()
         cv2.imshow("Video", img)
+
+        img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+        cv2.imshow("HSV", img_hsv)
+
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
