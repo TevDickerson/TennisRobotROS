@@ -58,7 +58,7 @@ def startvideo():
         cv2.imshow("Canny", imgcanny)
 
         imgcontors = img.copy()
-        getContours(imgcanny, imgcontors)
+        getContours(mask, imgcontors)
 
         cv2.imshow("Contors", imgcontors)
 
