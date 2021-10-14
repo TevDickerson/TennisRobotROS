@@ -8,12 +8,17 @@ import numpy as np
 def empty(val):
     pass
 
+
 def getContours(img, imgcontors):
     contours, heirarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     for cnt in contours:
         area = cv2.contourArea(cnt)
         if area > 50:
             cv2.drawContours(imgcontors, cnt, -1, (255, 0, 0), 3)
+            peri = cv2.arcLength(cnt, True)
+            approx = cv2.approxPolyDP(cnt, 0.02*peri, True)
+            x, y, w, h = cv2.boundingRect(approx)
+            cv2.rectangle(imgcontors, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
 def startvideo():
     rospy.init_node('videoer', anonymous=True)
