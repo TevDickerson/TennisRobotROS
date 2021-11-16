@@ -40,10 +40,10 @@ def startvideo():
 
     while not rospy.is_shutdown():
         success, img = cap.read()
-        cv2.imshow("Video", img)
+        #cv2.imshow("Video", img)
 
         img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-        cv2.imshow("HSV", img_hsv)
+        # cv2.imshow("HSV", img_hsv)
 
         h_min = cv2.getTrackbarPos("Hue min", "TrackedBars")
         h_max = cv2.getTrackbarPos("Hue max", "TrackedBars")
@@ -56,11 +56,11 @@ def startvideo():
         upper = np.array([h_max, s_max, v_max])
         mask = cv2.inRange(img_hsv, lower, upper)
 
-        cv2.imshow("Mask", mask)
+        # cv2.imshow("Mask", mask)
 
         imgcanny = cv2.Canny(mask, 50, 50)
 
-        cv2.imshow("Canny", imgcanny)
+        # cv2.imshow("Canny", imgcanny)
 
         imgcontors = img.copy()
         getContours(mask, imgcontors)
