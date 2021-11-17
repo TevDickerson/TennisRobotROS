@@ -40,6 +40,7 @@ def startvideo():
 
     while not rospy.is_shutdown():
         success, img = cap.read()
+        img = cv2.rotate(img,cv2.ROTATE_180)
         #cv2.imshow("Video", img)
 
         img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
